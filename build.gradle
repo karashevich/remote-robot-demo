@@ -1,0 +1,36 @@
+subprojects {
+    apply plugin: 'java'
+    group = 'remote-robot-demo'
+    version = '1.0'
+    repositories {
+        mavenCentral()
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+project(':api') {
+
+}
+
+project(':server') {
+    dependencies {
+        compile project(':api')
+    }
+}
+
+project(':client') {
+    dependencies {
+        compile project(':api')
+    }
+}
+
+project(':fest-impl') {
+    dependencies {
+        compile project(':api')
+        compile project(':client')
+        compile project(':server')
+    }
+}
